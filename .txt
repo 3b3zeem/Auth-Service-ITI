@@ -1,0 +1,23 @@
+Saraha app 
+DB  ... user ... messages
+register ... email
+login 
+hash ... password 
+jwt
+... token
+env
+
+
+questions  
+
+app.use  VS app.all
+
+
+requirements
+- intergation email ..... https://www.nodemailer.com/
+- https://www.npmjs.com/package/crypto-js ... phone
+
+
+upload image
+
+
