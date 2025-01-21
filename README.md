@@ -1,6 +1,4 @@
-# MyApp - Authentication System
-
-![MyApp Logo](https://myapp.com/logo.png) <!-- You can add your project logo here -->
+# My Sara7a App - Authentication System
 
 MyApp is a simple authentication system that allows users to register, log in, and receive a welcome email after successful registration. The system is built using Node.js, Express, and MongoDB.
 
