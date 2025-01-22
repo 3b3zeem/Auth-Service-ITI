@@ -49,6 +49,11 @@ Follow these steps to set up the project on your local machine:
     EMAIL_USER=your-email@gmail.com
     EMAIL_PASSWORD=your-email-password
     ```
+  **Screen shot for .env**:
+    ![Screenshot 2025-01-22 233306](https://github.com/user-attachments/assets/d32caa02-b180-4d22-8376-4c08209b906e)
+
+  ---
+    
 4. **Start the server**:
     ```bash
     nodemon ./index.js
