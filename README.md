@@ -62,5 +62,5 @@ Follow these steps to set up the project on your local machine:
 ----
 
 ### Contributing
-   If you would like to contribute to this project, please fork the repository and create a pull request with your changes. We welcome any improvements or new features!
+  - If you would like to contribute to this project, please fork the repository and create a pull request with your changes. We welcome any improvements or new features!
 
