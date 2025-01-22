@@ -1,2 +1,2 @@
 .env
-/uploads/
+"/src/modules/user/uploads/"
