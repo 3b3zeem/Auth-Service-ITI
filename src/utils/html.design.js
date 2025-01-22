@@ -1,4 +1,4 @@
-export const html = (userData) => {
+export const html = (userData, token) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -21,7 +21,7 @@ export const html = (userData) => {
           <p style="font-size: 16px; line-height: 1.6; margin: 20px 0;">
             If you have any questions or need assistance, feel free to <a href="mailto:support@myapp.com" style="color: #667eea; text-decoration: none;">mail me</a>.
           </p>
-          <a href="#" style="display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: bold; margin-top: 20px;">Get Started</a>
+          <a href="http://localhost:5000/api/auth/verify?token=${token}" style="display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: bold; margin-top: 20px;">Get Started</a>
         </div>
 
         <div style="text-align: center; padding: 20px; background-color:rgb(159, 159, 159); font-size: 14px;">

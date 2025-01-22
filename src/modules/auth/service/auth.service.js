@@ -1,7 +1,8 @@
 import User from "../../../DB/models/User.model.js";
 import bcrypt from "bcryptjs";
-import sendEmail from "../../email/email.js";
-import { html } from "../../email/html.design.js";
+import sendEmail from "../../../utils/email.js";
+import { html } from "../../../utils/html.design.js";
+import jwt from 'jsonwebtoken';
 
 const registerUser = async (userData) => {
   try {
@@ -18,6 +19,7 @@ const registerUser = async (userData) => {
     }
 
     const user = new User(userData);
+    const token = user.generateVerificationToken();
     await user.save();
 
     let userName = user.userName;
@@ -26,7 +28,7 @@ const registerUser = async (userData) => {
       to: user.email,
       subject: "Welcome to My Sara7a App! 🎉",
       text: `Hello ${user.userName}, welcome to MyApp!`,
-      html: html(userName),
+      html: html(userName, token),
     };
 
     await sendEmail(emailOptions);
@@ -72,4 +74,30 @@ const loginUser = async (email, password) => {
   }
 };
 
-export { registerUser, loginUser };
+const verifyUser = async (token) => {
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+      return { success: false, message: "User not found" };
+    }
+
+    user.verificationToken = undefined;
+    await user.save();
+
+    return {
+      success: true,
+      user,
+      message: "User verified successfully",
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: "Verification failed",
+      error: error.message,
+    };
+  }
+};
+
+export { registerUser, loginUser, verifyUser };
