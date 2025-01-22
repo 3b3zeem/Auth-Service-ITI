@@ -6,7 +6,7 @@ MyApp is a simple authentication system that allows users to register, log in, a
 
 - **User Registration**: Users can create a new account by providing a username, email, and password.
 - **User Login**: Registered users can log in using their email and password.
-- **Welcome Email**: After successful registration, a welcome email is sent to the user.
+- **Welcome Email**: After successful registration, a welcome email is sent to the user، must click "Get Started" link to be verified to do all requests.
 - **Message Management**:
   - **Create Messages**: A user can create their own messages. These messages are private, and no one else can view them.
   - **Delete Messages**: A user can delete their own messages. No one else can delete another user's messages.
