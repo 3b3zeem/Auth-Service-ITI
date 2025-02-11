@@ -33,6 +33,10 @@ const registerSchema = Joi.object({
         "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*)",
       "any.required": "Password is required",
     }),
+  confirmPassword: Joi.string().valid(Joi.ref("password")).required().messages({
+    "any.only": "Passwords do not match",
+    "any.required": "Confirm password is required",
+  }),
   phone: Joi.string().required().messages({
     "any.required": "Phone number is required",
   }),

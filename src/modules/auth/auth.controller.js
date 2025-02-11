@@ -11,11 +11,18 @@ const router = express.Router();
 
 router.post("/register", validate(registerSchema), async (req, res) => {
   try {
+    const { password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
+
     const { success, user, message, error } = await registerUser(req.body);
 
     if (success) {
       const userResponse = { ...user.toObject() };
       delete userResponse.password;
+      delete userResponse.verificationToken;
       userResponse.phone = user.phone;
 
       res.status(201).json({
@@ -53,12 +60,10 @@ router.post("/login", validate(loginSchema), async (req, res) => {
       res.status(401).json({ message, error });
     }
   } catch (err) {
-    res
-      .status(500)
-      .json({
-        message: "An error occurred while logging in",
-        error: err.message,
-      });
+    res.status(500).json({
+      message: "An error occurred while logging in",
+      error: err.message,
+    });
   }
 });
 

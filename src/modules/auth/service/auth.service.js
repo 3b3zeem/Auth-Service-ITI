@@ -18,6 +18,14 @@ const registerUser = async (userData) => {
       return { success: false, message: "Username already exists" };
     }
 
+    if (!userData.confirmPassword) {
+      return { success: false, message: "Confirm password is required" };
+    }
+
+    if (userData.password !== userData.confirmPassword) {
+      return { success: false, message: "Passwords do not match" };
+    }
+
     const user = new User(userData);
     const token = user.generateVerificationToken();
     await user.save();

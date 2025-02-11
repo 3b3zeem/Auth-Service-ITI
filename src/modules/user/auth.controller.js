@@ -9,7 +9,16 @@ const router = express.Router();
 router.get("/users", async (req, res) => {
   try {
     const users = await User.find({}, { password: 0, __v: 0 });
-    res.status(200).json({ success: true, users });
+    const formattedUsers = users.map((user) => {
+      const userObject = user.toObject(); 
+
+      if (!userObject.isVerified) {
+        delete userObject.verificationToken;
+      }
+
+      return userObject;
+    });
+    res.status(200).json({ success: true, formattedUsers });
   } catch (err) {
     res.status(500).json({ success: false, message: "Error fetching users", error: err.message });
   }
